@@ -1,9 +1,18 @@
-import express from "express";
+import express, { Application, NextFunction, Request, Response } from "express";
+import cors from "cors";
 const app = express();
-const port = 3000;
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+
+app.use(cors());
+
+// parser
+app.use(express.json());
+app.use;
+express.urlencoded({ extended: true });
+
+// tasting
+app.get("/", (req: Request, res: Response) => {
+  res.send("Working Sucessfully");
 });
 
 export default app;
