@@ -5,7 +5,7 @@ import { generateUserId } from "./user.utils";
 
 const createUser = async (user: IUser) => {
   // auto Id,
-  const id = generateUserId();
+  const id = await generateUserId();
   user.id = id;
 
   // default password
@@ -13,13 +13,13 @@ const createUser = async (user: IUser) => {
     user.password = config.default_student_pass as string;
   }
 
-  const createUser = await User.create(user);
+  const createdUser = await User.create(user);
 
-  if (!createUser) {
+  if (!createdUser) {
     throw new Error("User not created");
   }
 
-  return createUser;
+  return createdUser;
 };
 
 export default {
